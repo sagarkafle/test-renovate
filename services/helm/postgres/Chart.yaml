@@ -1,4 +1,3 @@
 apiVersion: v2
 name: postgres
-version: 0.1.0
-appVersion: "14.2" # not latest
+version: "0.1.0"
