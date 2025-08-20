@@ -21,8 +21,6 @@
       "groupName": "infra-updates"
     }
     ],
-    "enabledManagers": ["terraform", "terragrunt"]
-    ,
     "regexManagers": [
     {
         "description": "Update docker image references in all Kubernetes YAML manifests",
