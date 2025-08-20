@@ -24,14 +24,12 @@
     "enabledManagers": ["terraform", "terragrunt"]
     ,
     "regexManagers": [
-      {
+    {
+        "description": "Update docker image references in all Kubernetes YAML manifests",
         "fileMatch": [".*\\.ya?ml$"],
         "matchStrings": [
-          "image:\\s*['\"]?(?<depName>[\\w./-]+)(?::(?<currentValue>[\\w.-]+))?['\"]?"
+        "image:\\s*['\"]?(?<depName>[\\w./-]+)(?::(?<currentValue>[\\w.-]+))?['\"]?"
         ],
         "datasourceTemplate": "docker"
-      }
-    ]
-    ,
-    "baseBranches": ["main", "dev-test"]
-}
+    }
+    ]}
