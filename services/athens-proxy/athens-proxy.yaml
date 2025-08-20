@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: athens-proxy
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: athens-proxy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: athens-proxy
+spec:
+  selector:
+    matchLabels:
+      app: athens-proxy
+  template:
+    metadata:
+      labels:
+        app: athens-proxy
+    spec:
+      containers:
+        - name: athens-proxy
+          image: gomods/athens:v0.11.0 # not latest
+          ports:
+            - containerPort: 3000

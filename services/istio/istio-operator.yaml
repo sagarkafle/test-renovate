@@ -1,0 +1,11 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: example-istiocontrolplane
+spec:
+  profile: demo
+  components:
+    pilot:
+      k8s:
+        replicaCount: 1
+  tag: 1.17.2 # not latest
