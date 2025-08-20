@@ -21,10 +21,7 @@
       "groupName": "infra-updates"
     }
     ],
-    "enabledManagers": ["terraform", "helm", "terragrunt"],
-    "helm": {
-      "fileMatch": ["**/Chart.yaml"]
-    }
+    "enabledManagers": ["terraform", "terragrunt"]
     ,
     "regexManagers": [
       {
