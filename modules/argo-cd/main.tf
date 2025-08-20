@@ -7,7 +7,7 @@ resource "google_container_cluster" "primary" {
   name     = "argo-cd-gke-cluster"
   location = var.region
   initial_node_count = 1
-  min_master_version = var.gke_version
+  min_master_version = 1.25.6-gke.2000
 }
 
 # You would typically use a Helm release or a Kubernetes manifest to deploy Argo CD to GKE after the cluster is created.
@@ -27,7 +27,7 @@ resource "helm_release" "argo_cd" {
   name       = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  version    = var.argo_cd_version
+  version    = 2.5.0
   namespace  = "argo-cd"
   create_namespace = true
 }
