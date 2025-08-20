@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:14.2 # not latest
+          image: postgres:14.19 # not latest
           env:
             - name: POSTGRES_PASSWORD
               value: example
