@@ -1,0 +1,24 @@
+{
+  "extends": ["config:base"],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchPaths": ["**/mysql/**", "**/mongodb/**", "**/postgres/**"],
+      "groupName": "database-updates"
+    },
+    {
+      "matchPaths": [
+        "**/gke/**",
+        "**/istio/**",
+        "**/kafka/**",
+        "**/redis/**",
+        "**/nats/**",
+        "**/athens-proxy/**",
+        "**/helm/**",
+        "**/terraform/**",
+        "**/argo-cd/**"
+      ],
+      "groupName": "infra-updates"
+    }
+  ]
+}
