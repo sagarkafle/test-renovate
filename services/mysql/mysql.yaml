@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:8.0.28 # not latest
+          image: mysql:9.4.0 # not latest
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: example

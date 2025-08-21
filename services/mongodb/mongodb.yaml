@@ -24,6 +24,6 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: mongo:5.0.15 # not latest
+          image: mongo:8.0.13 # not latest
           ports:
             - containerPort: 27017
