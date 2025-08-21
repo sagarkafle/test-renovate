@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "renovate-selfhost.fullname" . }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: renovate
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              args:
+                # Example: run for a specific repo, or leave empty for autodiscover
+                # - "user/repo"
+              env:
+                {{- range .Values.env }}
+                - name: {{ .name }}
+                  value: {{ .value | quote }}
+                {{- end }}
+              envFrom:
+                - secretRef:
+                    name: {{ .Values.secretName }}
+              {{- if .Values.configMapName }}
+              volumeMounts:
+                - name: config-volume
+                  mountPath: /opt/renovate/
+              {{- end }}
+              resources: {{- toYaml .Values.resources | nindent 16 }}
+          restartPolicy: {{ .Values.restartPolicy }}
+          {{- if .Values.configMapName }}
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ .Values.configMapName }}
+          {{- end }}
