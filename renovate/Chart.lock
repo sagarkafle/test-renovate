@@ -3,4 +3,4 @@ dependencies:
   repository: https://docs.renovatebot.com/helm-charts/
   version: 43.15.0
 digest: sha256:103075694e177ff13b6cdf79f8d44832e6e2428cdf0cae86ba25a6213edd64d5
-generated: "2025-08-22T17:29:31.602371+02:00"
+generated: "2025-08-22T19:44:23.545063+02:00"
