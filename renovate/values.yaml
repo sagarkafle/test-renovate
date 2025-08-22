@@ -1,0 +1,12 @@
+renovate:
+  renovate:
+    config: |-
+      {
+        "platform": "github",
+        "token": "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",
+        "repositories": ["sagarkafle/fcberlinnepal"],
+        "onboarding": true,
+        "printConfig": true
+      }
+env:
+  LOG_LEVEL: debug
