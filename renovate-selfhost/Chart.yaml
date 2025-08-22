@@ -1,0 +1,6 @@
+apiVersion: v2
+name: renovate-selfhosted
+version: 1.0.0
+description: Helm chart for self-hosted Renovate 
+type: application
+appVersion: "41.76.0"

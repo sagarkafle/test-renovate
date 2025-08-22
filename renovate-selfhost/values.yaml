@@ -12,6 +12,8 @@ restartPolicy: Never
 env:
   - name: LOG_LEVEL
     value: debug
+  - name: RENOVATE_FORCE
+    value: "true"
 
 # Name of the secret containing sensitive envs (e.g., RENOVATE_TOKEN, RENOVATE_REPOSITORIES)
 secretName: renovate-env
@@ -30,3 +32,6 @@ resources:
 
 # List of repositories to be managed by Renovate(Comma separated for multiple repos)
 repositories: "sagarkafle/test-renovate"
+
+# GitHub secret, only to test locally not to use in production and in cloud repos
+renovateToken: "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"
