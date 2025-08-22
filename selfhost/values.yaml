@@ -1,0 +1,32 @@
+image:
+  repository: renovate/renovate
+  tag: 41.76.0
+  pullPolicy: IfNotPresent
+
+# CronJob schedule (default: every hour)
+schedule: "@hourly"
+concurrencyPolicy: Forbid
+restartPolicy: Never
+
+# Non-secret environment variables for Renovate
+env:
+  - name: LOG_LEVEL
+    value: debug
+
+# Name of the secret containing sensitive envs (e.g., RENOVATE_TOKEN, RENOVATE_REPOSITORIES)
+secretName: renovate-env
+
+# Optionally mount a config file from a ConfigMap
+configMapName: ""
+
+# Resource requests and limits for the Renovate pod
+resources:
+  requests:
+    cpu: "200m"
+    memory: "1Gi"
+  limits:
+    cpu: "1"
+    memory: "2Gi"
+
+# List of repositories to be managed by Renovate(Comma separated for multiple repos)
+repositories: "sagarkafle/test-renovate"
