@@ -1,6 +1,6 @@
 image:
   repository: renovate/renovate
-  tag: 41.76.0
+  tag: 41.84.0
   pullPolicy: IfNotPresent
 
 # CronJob schedule (default: every hour)
