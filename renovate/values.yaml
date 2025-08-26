@@ -5,7 +5,7 @@ renovate:
     config: |-
       module.exports = {
         platform: "github",
-        token: process.env.GITHUB_TOKEN,
+        token: "",
         repositories: ["sagarkafle/recruiterTest"],
         onboarding: true,
         printConfig: true
