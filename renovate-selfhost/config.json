@@ -1,0 +1,7 @@
+{
+  "platform": "github",
+  "token": "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",
+  "repositories": ["sagarkafle/test-renovate"],
+  "onboarding": true,
+  "logLevel": "debug"
+}

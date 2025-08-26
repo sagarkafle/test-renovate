@@ -1,0 +1,66 @@
+---
+# Source: lovoo-renovate/charts/renovate/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lovoo-renovate-config
+  namespace: default
+  labels:
+    helm.sh/chart: renovate-43.15.0
+    app.kubernetes.io/name: renovate
+    app.kubernetes.io/instance: lovoo-renovate
+    app.kubernetes.io/version: "41.76.0"
+    app.kubernetes.io/managed-by: Helm
+data:
+  config.json: |-
+    {
+      "platform": "github",
+      "token": "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",
+      "repositories": ["sagarkafle/test-renovate"],
+      "onboarding": true
+    }
+---
+# Source: lovoo-renovate/charts/renovate/templates/cronjob.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: lovoo-renovate
+  namespace: default
+  labels:
+    helm.sh/chart: renovate-43.15.0
+    app.kubernetes.io/name: renovate
+    app.kubernetes.io/instance: lovoo-renovate
+    app.kubernetes.io/version: "41.76.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  schedule: "0 1 * * *"
+  jobTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/name: renovate
+        app.kubernetes.io/instance: lovoo-renovate
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: renovate
+            app.kubernetes.io/instance: lovoo-renovate
+        spec:
+          serviceAccountName: default
+          restartPolicy: Never
+          containers:
+            - name: renovate
+              image: "ghcr.io/renovatebot/renovate:41.76.0"
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - name: config-volume
+                  mountPath: /usr/src/app/config.json
+                  subPath: config.json
+              env:
+                - name: RENOVATE_CONFIG_FILE
+                  value: /usr/src/app/config.json
+              envFrom:
+          volumes:
+            - name: config-volume
+              configMap:
+                name: lovoo-renovate-config
