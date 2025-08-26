@@ -1,12 +1,11 @@
 renovate:
-  existingSecret: renovate-github-token
-  renovate:
+ renovate:
     configIsJavaScript: true
     config: |-
       module.exports = {
         platform: "github",
-        token: "",
-        repositories: ["sagarkafle/recruiterTest"],
+        token: "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",
+        repositories: ["sagarkafle/test-renovate"],
         onboarding: true,
         printConfig: true
       }
