@@ -3,7 +3,7 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchPaths": ["^services/mysql/.*"],
+      "matchPaths": ["^services/terraform/mysql/.*"],
       "enabled": true
     },
     {
