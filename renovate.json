@@ -1,3 +1,14 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchPaths": ["^services/mysql/.*"],
+      "enabled": true
+    },
+    {
+      "matchPaths": [".*"],
+      "enabled": false
+    }
+  ]
 }
